@@ -1,4 +1,4 @@
-import { describe } from riteaway;
+import { describe } from 'riteway';
 
 import Scorer from './scorer';
 

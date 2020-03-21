@@ -6,10 +6,10 @@ const BALL_TYPES = [
 ];
 
 export default class Scorer {
-  private score;
 
   constructor () {
     console.log('constructor called');
+    // this.score = {};
     this._resetScore();
   }
 
@@ -40,7 +40,7 @@ export default class Scorer {
 
   }
 
-  private _handleBallType(ballType) {
+  _handleBallType(ballType) {
     if (ballType === 'wide' || ballType === 'no') {
       this._addExtraRun();
     } else {
@@ -48,7 +48,7 @@ export default class Scorer {
     }
   }
 
-  private _incrementBallCount() {
+  _incrementBallCount() {
     this.score.balls++;
     if (this.score.balls === BALLS_PER_OVER) {
       this.score.overs++;
@@ -56,8 +56,7 @@ export default class Scorer {
     }
   }
 
-  private _addExtraRun() {
+  _addExtraRun() {
     this.score.runs++;
   }
-
 }
