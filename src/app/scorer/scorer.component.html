@@ -1,0 +1,26 @@
+<mat-card>
+  <h1>{{ score.runs }}/{{ score.wickets }}</h1>
+  ({{ score.overs}}.{{ score.balls }} overs)
+</mat-card>
+
+<div>
+  <mat-radio-group [(ngModel)]="ballType">
+    <mat-radio-button *ngFor="let bt of ballTypes" [value]="bt.value">
+      {{ bt.name }}
+    </mat-radio-button>
+  </mat-radio-group>
+</div>
+
+<div>
+  <button mat-stroked-button color="primary" (click)="scoreClick(0)">DOT</button>
+  <button mat-stroked-button color="primary" (click)="scoreClick(1)">1</button>
+  <button mat-stroked-button color="primary" (click)="scoreClick(2)">2</button>
+  <button mat-stroked-button color="primary" (click)="scoreClick(3)">3</button>
+  <button mat-stroked-button color="primary" (click)="scoreClick(4)">4</button>
+  <button mat-stroked-button color="primary" (click)="scoreClick(5)">5</button>
+  <button mat-stroked-button color="primary" (click)="scoreClick(6)">6</button>
+</div>
+
+<div>
+  <button mat-stroked-button color="warn" (click)="scoreOut(0)">Out</button>
+</div>
