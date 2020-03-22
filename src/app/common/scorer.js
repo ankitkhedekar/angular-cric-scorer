@@ -8,8 +8,6 @@ const BALL_TYPES = [
 export default class Scorer {
 
   constructor () {
-    console.log('constructor called');
-    // this.score = {};
     this._resetScore();
   }
 
@@ -20,24 +18,6 @@ export default class Scorer {
       overs: 0,
       balls: 0
     }
-  }
-
-  getScore() {
-    return this.score;
-  }
-
-  getBallTypes() {
-    return BALL_TYPES;
-  }
-
-  scoreNext(runs, ballType, isOut) {
-    this._handleBallType(ballType);
-    this.score.runs+=runs;
-
-    if (isOut) {
-      this.score.wickets++;
-    }
-
   }
 
   _handleBallType(ballType) {
@@ -58,5 +38,23 @@ export default class Scorer {
 
   _addExtraRun() {
     this.score.runs++;
+  }
+
+  getScore() {
+    return this.score;
+  }
+
+  getBallTypes() {
+    return BALL_TYPES;
+  }
+
+  scoreNext(runs, ballType, isOut) {
+    this._handleBallType(ballType);
+    this.score.runs+=runs;
+
+    if (isOut) {
+      this.score.wickets++;
+    }
+
   }
 }
