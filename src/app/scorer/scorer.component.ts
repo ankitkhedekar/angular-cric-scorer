@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import Scorer from './../common/scorer';
+import { ScorerActionSheetComponent } from './../scorer-action-sheet/scorer-action-sheet.component';
 
 @Component({
   selector: 'scorer',
@@ -15,11 +17,12 @@ export class ScorerComponent  {
   private ballType: string;
 
 
-  constructor (){
+  constructor (private _actionSheet: MatBottomSheet){
     this.scorer = new Scorer();
     this.score = this.scorer.getScore();
     this.ballTypes = this.scorer.getBallTypes();
     this._resetBallType();
+    this._openActionSheet();
   }
 
   scoreClick(runs) {
@@ -34,6 +37,12 @@ export class ScorerComponent  {
 
   private _resetBallType () {
     this.ballType = 'normal';
+  }
+
+  private _openActionSheet () {
+    this._actionSheet.open(ScorerActionSheetComponent , {
+      hasBackdrop: false
+    });
   }
 
 }
