@@ -12,6 +12,7 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet'
 import { AppComponent } from './app.component';
 import { ScorerComponent } from './scorer/scorer.component';
 import { ScorerActionSheetComponent } from './scorer-action-sheet/scorer-action-sheet.component';
+import { ScorerService } from './scorer/scorer.service';
 
 
 
@@ -19,6 +20,7 @@ import { ScorerActionSheetComponent } from './scorer-action-sheet/scorer-action-
   imports:      [ BrowserModule, BrowserAnimationsModule, FormsModule, MatCardModule, MatButtonModule, MatRadioModule, MatBottomSheetModule ],
   declarations: [ AppComponent, ScorerComponent, ScorerActionSheetComponent ],
   bootstrap:    [ AppComponent ],
-  entryComponents: [ ScorerActionSheetComponent ]
+  entryComponents: [ ScorerActionSheetComponent ],
+  providers: [ScorerService]
 })
 export class AppModule { }

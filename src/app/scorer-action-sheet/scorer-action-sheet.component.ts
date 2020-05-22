@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ScorerService } from './../scorer/scorer.service';
+
 @Component({
   selector: 'app-scorer-action-sheet',
   templateUrl: './scorer-action-sheet.component.html',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScorerActionSheetComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _scorerService: ScorerService) { }
 
   ngOnInit() {
+  }
+
+  scoreClick(runs) {
+    this._scorerService.scoreNext(runs, 'normal');
   }
 
 }
