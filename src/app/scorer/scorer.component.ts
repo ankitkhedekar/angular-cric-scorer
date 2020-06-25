@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
-import Scorer from './../common/scorer';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { ScorerService } from './scorer.service';
+import { ScorerActionSheetComponent } from './../scorer-action-sheet/scorer-action-sheet.component';
 
 @Component({
   selector: 'scorer',
@@ -15,25 +17,35 @@ export class ScorerComponent  {
   private ballType: string;
 
 
-  constructor (){
-    this.scorer = new Scorer();
-    this.score = this.scorer.getScore();
-    this.ballTypes = this.scorer.getBallTypes();
+  constructor (private _actionSheet: MatBottomSheet,
+    private _scorerService: ScorerService
+  ){
+    this.score = this._scorerService.getCurrentScore();
+    this.ballTypes = this._scorerService.getBallTypes();
     this._resetBallType();
+    this._openActionSheet();
   }
 
   scoreClick(runs) {
-    this.scorer.scoreNext(runs, this.ballType);
+    this._scorerService.scoreNext(runs, this.ballType);
     this._resetBallType();
   }
 
   scoreOut(runs) {
-    this.scorer.scoreNext(0, this.ballType, true);
+    this._scorerService.scoreNext(0, this.ballType, true);
     this._resetBallType();
   }
 
   private _resetBallType () {
+    console.log('erere');
     this.ballType = 'normal';
+  }
+
+  private _openActionSheet () {
+    this._actionSheet.open(ScorerActionSheetComponent , {
+      hasBackdrop: false,
+      autoFocus: false
+    });
   }
 
 }
