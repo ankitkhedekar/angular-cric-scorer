@@ -9,7 +9,13 @@ import { ScorerService } from './../scorer/scorer.service';
 })
 export class ScorerActionSheetComponent implements OnInit {
 
-  constructor(private _scorerService: ScorerService) { }
+
+  private ballTypes;
+  private ballType: string;
+
+  constructor(private _scorerService: ScorerService) { 
+    this.ballTypes = this._scorerService.getBallTypes();
+  }
 
   ngOnInit() {
   }

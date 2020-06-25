@@ -7,7 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule }  from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule } from '@angular/material/radio';
-import {MatBottomSheetModule} from '@angular/material/bottom-sheet'
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AppComponent } from './app.component';
 import { ScorerComponent } from './scorer/scorer.component';
@@ -17,7 +18,7 @@ import { ScorerService } from './scorer/scorer.service';
 
 
 @NgModule({
-  imports:      [ BrowserModule, BrowserAnimationsModule, FormsModule, MatCardModule, MatButtonModule, MatRadioModule, MatBottomSheetModule ],
+  imports:      [ BrowserModule, BrowserAnimationsModule, FormsModule, MatCardModule, MatButtonModule, MatRadioModule, MatBottomSheetModule, MatGridListModule ],
   declarations: [ AppComponent, ScorerComponent, ScorerActionSheetComponent ],
   bootstrap:    [ AppComponent ],
   entryComponents: [ ScorerActionSheetComponent ],
