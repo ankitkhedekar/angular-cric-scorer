@@ -15,30 +15,16 @@ export class ScorerComponent  {
   private score;
   private ballTypes;
   private ballType: string;
+  private thisOver;
+  private test = [1,2,3]
 
 
   constructor (private _actionSheet: MatBottomSheet,
     private _scorerService: ScorerService
   ){
     this.score = this._scorerService.getCurrentScore();
-    this.ballTypes = this._scorerService.getBallTypes();
-    this._resetBallType();
     this._openActionSheet();
-  }
-
-  scoreClick(runs) {
-    this._scorerService.scoreNext(runs, this.ballType);
-    this._resetBallType();
-  }
-
-  scoreOut(runs) {
-    this._scorerService.scoreNext(0, this.ballType, true);
-    this._resetBallType();
-  }
-
-  private _resetBallType () {
-    console.log('erere');
-    this.ballType = 'normal';
+    this.thisOver = this._scorerService.getThisOver();
   }
 
   private _openActionSheet () {
