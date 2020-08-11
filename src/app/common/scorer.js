@@ -7,9 +7,8 @@ const BALL_TYPES = [
 
 export default class Scorer {
 
-  thisOver = [];
-
   constructor () {
+    this.thisOver = [];
     this._resetScore();
   }
 
