@@ -22,4 +22,8 @@ export class ScorerService {
     this.scorer.scoreNext(runs, ballType, isOut);
   }
 
+  getThisOver() {
+    return this.scorer.getThisOver();
+  }
+
 }

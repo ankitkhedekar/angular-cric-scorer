@@ -1,14 +1,11 @@
-<!-- <mat-radio-group [(ngModel)]="ballType">
-  <mat-grid-list cols="3" rowHeight="50px" gutterSize="10px">
-    <mat-grid-tile *ngFor="let bt of ballTypes">
-      <mat-radio-button [value]="bt.value">
+<mat-grid-list cols="3" rowHeight="50px" gutterSize="10px">
+  <mat-grid-tile colspan="3">
+    <mat-radio-group [(ngModel)]="ballType">
+      <mat-radio-button *ngFor="let bt of ballTypes" [value]="bt.value">
         {{ bt.name }}
       </mat-radio-button>
-    </mat-grid-tile>
-  </mat-grid-list>
-</mat-radio-group> -->
-
-<mat-grid-list cols="3" rowHeight="50px" gutterSize="10px">
+    </mat-radio-group>
+  </mat-grid-tile>
   <mat-grid-tile><button mat-stroked-button class="action-sheet-btn" color="primary" (click)="scoreClick(0)">DOT</button></mat-grid-tile>
   <mat-grid-tile><button mat-stroked-button class="action-sheet-btn" color="primary" (click)="scoreClick(1)">1</button></mat-grid-tile>
   <mat-grid-tile><button mat-stroked-button class="action-sheet-btn" color="primary" (click)="scoreClick(2)">2</button></mat-grid-tile>
@@ -16,5 +13,7 @@
   <mat-grid-tile><button mat-stroked-button class="action-sheet-btn" color="primary" (click)="scoreClick(4)">4</button></mat-grid-tile>
   <mat-grid-tile><button mat-stroked-button class="action-sheet-btn" color="primary" (click)="scoreClick(5)">5</button></mat-grid-tile>
   <mat-grid-tile><button mat-stroked-button class="action-sheet-btn" color="primary" (click)="scoreClick(6)">6</button></mat-grid-tile>
-  <!-- <mat-grid-tile><button mat-stroked-button class="action-sheet-btn" color="warn" (click)="scoreOut(0)">Out</button></mat-grid-tile> -->
+  <mat-grid-tile><button mat-stroked-button class="action-sheet-btn" color="primary" (click)="scoreClick(7)">7</button></mat-grid-tile>
+  <mat-grid-tile><button mat-stroked-button class="action-sheet-btn" color="primary" (click)="scoreClick(8)">8</button></mat-grid-tile>
+  <mat-grid-tile colspan="3"><button mat-stroked-button class="action-sheet-btn" color="warn" (click)="scoreOut(0)">Out</button></mat-grid-tile>
 </mat-grid-list>
