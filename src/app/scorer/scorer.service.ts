@@ -1,21 +1,25 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
-import Scorer from './../common/scorer';
+import Scorer from "./../common/scorer";
 
 @Injectable()
 export class ScorerService {
   private scorer;
 
-  constructor() { 
+  constructor() {
     this.scorer = new Scorer();
   }
 
   getCurrentScore() {
-    return this.scorer.getScore();
+    return this.scorer.score;
+  }
+
+  getCurrentOvers() {
+    return this.scorer.overs;
   }
 
   getBallTypes() {
-    return this.scorer.getBallTypes();
+    return this.scorer.ballTypes;
   }
 
   scoreNext(runs, ballType, isOut = false) {
@@ -23,7 +27,6 @@ export class ScorerService {
   }
 
   getThisOver() {
-    return this.scorer.getThisOver();
+    return this.scorer.thisOver;
   }
-
 }
