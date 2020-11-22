@@ -23,16 +23,30 @@ export class ScorerComponent {
     private _actionSheet: MatBottomSheet,
     private _scorerService: ScorerService
   ) {
+    this._getScoreForScoreCard();
+    this._openActionSheet();
+  }
+
+  private _getScoreForScoreCard() {
     this.score = this._scorerService.getCurrentScore();
     this.overs = this._scorerService.getCurrentOvers();
-    this._openActionSheet();
     this.thisOver = this._scorerService.getThisOver();
+    console.log("this.thisOver", this.thisOver);
   }
 
   private _openActionSheet() {
-    this._actionSheet.open(ScorerActionSheetComponent, {
-      hasBackdrop: false,
-      autoFocus: false
-    });
+    const scoreComponentRef = this;
+    const scorerActionSheet = this._actionSheet.open(
+      ScorerActionSheetComponent,
+      {
+        data: {
+          onScoreChangeHandler: function() {
+            scoreComponentRef._getScoreForScoreCard();
+          }
+        },
+        hasBackdrop: false,
+        autoFocus: false
+      }
+    );
   }
 }

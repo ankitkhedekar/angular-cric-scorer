@@ -56,7 +56,8 @@ export default class Scorer {
   }
 
   get score() {
-    return this._score;
+    // return this._score;
+    return `${this._score.runs}/${this._score.wickets}`;
   }
 
   get overs() {

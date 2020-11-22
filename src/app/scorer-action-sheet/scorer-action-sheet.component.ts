@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, Inject, OnInit, Output } from "@angular/core";
+import { MAT_BOTTOM_SHEET_DATA } from "@angular/material/bottom-sheet";
 
 import { ScorerService } from "./../scorer/scorer.service";
 
@@ -8,12 +9,14 @@ import { ScorerService } from "./../scorer/scorer.service";
   styleUrls: ["./scorer-action-sheet.component.css"]
 })
 export class ScorerActionSheetComponent implements OnInit {
-  @Output() onScoreChange: EventEmitter<any> = new EventEmitter();
-
   private ballTypes;
   private ballType: string;
 
-  constructor(private _scorerService: ScorerService) {
+  constructor(
+    @Inject(MAT_BOTTOM_SHEET_DATA) public data: any,
+    private _scorerService: ScorerService
+  ) {
+    console.log("herererere", data);
     this.ballTypes = this._scorerService.getBallTypes();
     this._resetBallType();
   }
@@ -22,7 +25,7 @@ export class ScorerActionSheetComponent implements OnInit {
 
   private _score(runs, ballType, isOut) {
     this._scorerService.scoreNext(runs, ballType, isOut);
-    this.onScoreChange.emit();
+    this.data.onScoreChangeHandler();
   }
 
   private _resetBallType() {

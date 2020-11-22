@@ -4,15 +4,14 @@
 	<mat-grid-tile>
 		<mat-card>
 			<mat-card-content>
-				<h1>{{ score.runs }}/{{ score.wickets }}</h1>
-				({{ score.overs}}.{{ score.balls }} overs)
+				<h1>{{ score }}</h1>
 				({{ overs }} overs)
 			</mat-card-content>
 		</mat-card>
 	</mat-grid-tile>
 	<mat-grid-tile class="mat-typography">
 		<p *ngIf="thisOver.length > 0">
-			This Over:
+			This Over:s
 			<span *ngFor="let to of thisOver"> {{ to.runs }} </span>
 		</p>
 	</mat-grid-tile>
