@@ -1,0 +1,3 @@
+<div>{{ currentInnings }}</div>
+<div>{{ matchStatus }}</div>
+<scorer [scorerObj]="match.team1Score" [matchStatus]="matchStatus" (scoreTick)="scoreTickHandler()"></scorer>

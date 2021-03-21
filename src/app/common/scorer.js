@@ -64,6 +64,14 @@ export default class Scorer {
     return `${this._score.overs}.${this._score.balls}`;
   }
 
+  getCurrentOverCount() {
+    return this._score.overs;
+  }
+
+  getCurrentBallCount() {
+    return this._score.balls;
+  }
+
   get ballTypes() {
     return BALL_TYPES;
   }

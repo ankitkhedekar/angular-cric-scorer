@@ -4,29 +4,30 @@ import Scorer from "./../common/scorer";
 
 @Injectable()
 export class ScorerService {
-  private scorer;
+  private _scorer: any;
+  constructor() {}
 
-  constructor() {
-    this.scorer = new Scorer();
+  set scorer(scorerObj) {
+    this._scorer = scorerObj;
   }
 
   getCurrentScore() {
-    return this.scorer.score;
+    return this._scorer.score;
   }
 
   getCurrentOvers() {
-    return this.scorer.overs;
+    return this._scorer.overs;
   }
 
   getBallTypes() {
-    return this.scorer.ballTypes;
+    return this._scorer.ballTypes;
   }
 
   scoreNext(runs, ballType, isOut = false) {
-    this.scorer.scoreNext(runs, ballType, isOut);
+    this._scorer.scoreNext(runs, ballType, isOut);
   }
 
   getThisOver() {
-    return this.scorer.thisOver;
+    return this._scorer.thisOver;
   }
 }

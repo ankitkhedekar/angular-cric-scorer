@@ -1,4 +1,4 @@
-import { Component, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { MatBottomSheet } from "@angular/material/bottom-sheet";
 import { ScorerService } from "./scorer.service";
 import { ScorerActionSheetComponent } from "./../scorer-action-sheet/scorer-action-sheet.component";
@@ -10,6 +10,9 @@ import { ScorerActionSheetComponent } from "./../scorer-action-sheet/scorer-acti
 })
 export class ScorerComponent {
   @Input() name: string;
+  @Input() matchStatus;
+  @Input() scorerObj;
+  @Output() scoreTick = new EventEmitter();
 
   private scorer;
   private score;
@@ -22,7 +25,10 @@ export class ScorerComponent {
   constructor(
     private _actionSheet: MatBottomSheet,
     private _scorerService: ScorerService
-  ) {
+  ) {}
+
+  ngOnInit() {
+    this._scorerService.scorer = this.scorerObj;
     this._getScoreForScoreCard();
     this._openActionSheet();
   }
@@ -31,7 +37,12 @@ export class ScorerComponent {
     this.score = this._scorerService.getCurrentScore();
     this.overs = this._scorerService.getCurrentOvers();
     this.thisOver = this._scorerService.getThisOver();
-    console.log("this.thisOver", this.thisOver);
+    console.log("_getScoreForScoreCard");
+    this.scoreTick.emit("dummy");
+
+    if (this.matchStatus === "COMPLETED") {
+      this._actionSheet.dismiss();
+    }
   }
 
   private _openActionSheet() {
